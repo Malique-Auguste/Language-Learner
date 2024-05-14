@@ -1,0 +1,212 @@
+{
+  "inner": [
+    {
+      "front": "hello",
+      "back": "nǐhǎo",
+      "accuracy": [
+        65.0,
+        50.0
+      ]
+    },
+    {
+      "front": "i",
+      "back": "wǒ",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "you",
+      "back": "nǐ",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to love (romantically)",
+      "back": "ài",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "it",
+      "back": "tā",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "and",
+      "back": "hé",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to be (doing something)",
+      "back": "shì",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "not",
+      "back": "bù",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to have/possess",
+      "back": "yǒu",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "but/however/yet (formal)",
+      "back": "dànshì",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "but/however (informal)",
+      "back": "kěshì",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "just (happened)",
+      "back": "gāng",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "posession particle (pronoun + posession particle = possessive pronoun)",
+      "back": "de",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to do/make",
+      "back": "zuò",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "if (to form hypotheticals such as \"if...then...\", not to express uncertainty such as \"she doesn't know if...\")",
+      "back": "rúguǒ",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to think",
+      "back": "xiǎng",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "good",
+      "back": "hǎo",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "plural marker for people",
+      "back": "men",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "now",
+      "back": "xiànzài",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "thank you",
+      "back": "xièxie",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to see/watch/look at",
+      "back": "kàn",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to go",
+      "back": "qù",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to need",
+      "back": "xūyào",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to feel (physical and emotional)",
+      "back": "gǎnjué",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "to be (adjective)",
+      "back": "hěn",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    },
+    {
+      "front": "very/quite",
+      "back": "hěn",
+      "accuracy": [
+        50.0,
+        40.0
+      ]
+    }
+  ]
+}
