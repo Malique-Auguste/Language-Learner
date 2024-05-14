@@ -22,7 +22,10 @@ fn main() {
 
 
     loop {
-        println!("\n----------\n");
+        //Clear screen
+        print!("{}[2J", 27 as char);
+        print!("{esc}[2J{esc}[1;1H", esc = 27 as char);
+        
         println!("Would you like to test yourself (1) or add to the deck (2)? (Type 'x' at any time to exit)");
 
         let mut input = String::new();
@@ -35,14 +38,18 @@ fn main() {
 
         match option_num {
             1 => {
-                println!("\n----------\n");
                 if deck.inner().len() == 0 {
-                    println!("Cannot operate on an empty deck");
+                    println!("Cannot operate on an empty deck\nEnter anything to continue.");
+                    let mut input = String::new();
+                    std::io::stdin().read_line(&mut input).unwrap();
                 }
                 else {
                     loop {
-                        println!("\n----------\n");
-                        println!("Would you liek to do an easy (1), medium (2), or hard (3) test?");
+                        //Clear screen
+                        print!("{}[2J", 27 as char);
+                        print!("{esc}[2J{esc}[1;1H", esc = 27 as char);
+
+                        println!("Would you like to do an easy (1), medium (2), or hard (3) test?");
 
                         let mut input = String::new();
                         std::io::stdin().read_line(&mut input).unwrap();
@@ -74,7 +81,10 @@ fn main() {
             },
             2 => {
                 loop {
-                    println!("\n----------\n");
+                    //Clear screen
+                    print!("{}[2J", 27 as char);
+                    print!("{esc}[2J{esc}[1;1H", esc = 27 as char);
+
                     let card = match create_card() {
                         Ok(c) => c,
                         Err(_) => break
@@ -89,6 +99,8 @@ fn main() {
         }
     }
 
+    deck.sort();
+
     let mut database_file = fs::OpenOptions::new().write(true).open("database.txt").unwrap();
     database_file.write_all(serde_json::to_string_pretty(&deck).unwrap().as_bytes()).unwrap();
 
@@ -100,7 +112,7 @@ fn test_deck(deck: &mut Deck, diff: Difficulty) -> Result<(), ()> {
     for i in indices {
         let card = &mut deck.inner()[i];
 
-        println!("\nCard Front: {}", card.front());
+        println!("----------\nCard Front: {} | Accuracy: {:.2} % ", card.front(), card.get_accuracy());
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
 

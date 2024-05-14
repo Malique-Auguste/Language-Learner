@@ -17,9 +17,14 @@ impl Deck {
         &mut self.inner
     }
 
-    pub fn get_test_indices<'a>(&mut self, mut num_of_cards: usize, difficulty: Difficulty) -> Vec<usize> {
+    pub fn sort(&mut self){
         self.inner.sort_by(|a, b| b.accuracy[0].total_cmp(&a.accuracy[0]));
+    }
 
+
+    pub fn get_test_indices<'a>(&mut self, mut num_of_cards: usize, difficulty: Difficulty) -> Vec<usize> {
+        self.sort();
+        
         let mut indices: Vec<usize> = (0..self.inner.len()).collect();
         let mut output: Vec<usize> = Vec::new();
         
@@ -75,6 +80,10 @@ impl Card {
         &self.back
     }
 
+    pub fn get_accuracy(&self) -> f64 {
+        self.accuracy[0]
+    }
+
     pub fn adjust_accuracy(&mut self, correct: bool) {
         let difference = self.accuracy[0] - self.accuracy[1];
         self.accuracy[1] = self.accuracy[0];
@@ -89,7 +98,12 @@ impl Card {
                 self.accuracy[0] += 10.0;
             }
             else {
-                unreachable!()
+                if self.accuracy[0] == 100.0 {
+                    self.accuracy[1] = 90.0
+                }
+                else {
+                    unreachable!()
+                }
             }
         }
         else {
@@ -102,7 +116,12 @@ impl Card {
                 self.accuracy[0] -= -difference * 1.5;
             }
             else {
-                unreachable!()
+                if self.accuracy[0] == 0.0 {
+                    self.accuracy[1] = 10.0
+                }
+                else {
+                    unreachable!()
+                }
             }
         }
 
