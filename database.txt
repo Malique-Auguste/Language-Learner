@@ -49,7 +49,7 @@
       ]
     },
     {
-      "front": "to be (doing something)",
+      "front": "to be (not adjectives)",
       "back": "shì",
       "accuracy": [
         50.0,

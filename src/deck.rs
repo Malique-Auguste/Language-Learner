@@ -1,4 +1,7 @@
+use core::num;
+
 use serde::{Deserialize, Serialize};
+use rand::prelude::*;
 
 #[derive(Serialize, Deserialize, Clone, Default)]
 pub struct Deck {
@@ -12,6 +15,39 @@ impl Deck {
 
     pub fn inner(&mut self) -> &mut Vec<Card> {
         &mut self.inner
+    }
+
+    pub fn get_test_indices<'a>(&mut self, mut num_of_cards: usize, difficulty: Difficulty) -> Vec<usize> {
+        self.inner.sort_by(|a, b| b.accuracy[0].total_cmp(&a.accuracy[0]));
+
+        let mut indices: Vec<usize> = (0..self.inner.len()).collect();
+        let mut output: Vec<usize> = Vec::new();
+        
+        let mut rng = rand::thread_rng();
+
+        if num_of_cards > self.inner.len() {
+            num_of_cards = self.inner.len()
+        }
+
+        for _ in 0..num_of_cards {
+            let mut i = rng.gen_range(0..indices.len());
+            
+            match difficulty {
+                Difficulty::Easy => i = i/2,
+                Difficulty::Medium => (),
+                Difficulty::Hard => i = i*2
+            }
+
+            if i > indices.len() {
+                i = indices.len()
+            }
+
+            output.push(
+                indices.remove(i)
+            );
+        }
+
+        output
     }
 }
 
@@ -77,4 +113,10 @@ impl Card {
             self.accuracy[0] = 0.0
         }
     }
+}
+
+pub enum Difficulty {
+    Easy,
+    Medium,
+    Hard
 }

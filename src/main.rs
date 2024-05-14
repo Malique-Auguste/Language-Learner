@@ -28,11 +28,10 @@ fn main() {
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
 
-        if input.trim().to_lowercase() == String::from("x") {
-            break
-        }
-
-        let option_num: u8 = input.trim().parse().unwrap();
+        let option_num: u8 = match input.trim().parse() {
+            Ok(n) => n,
+            Err(_) => break
+        };
 
         match option_num {
             1 => {
@@ -72,8 +71,12 @@ fn main() {
 }
 
 fn test_deck(deck: &mut Deck) -> Result<(), ()> {
-    for card in deck.inner().iter_mut() {
-        println!("Card Front: {}", card.front());
+    let indices = deck.get_test_indices(10, Difficulty::Medium);
+
+    for i in indices {
+        let card = &mut deck.inner()[i];
+
+        println!("\nCard Front: {}", card.front());
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
 
@@ -85,17 +88,15 @@ fn test_deck(deck: &mut Deck) -> Result<(), ()> {
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
 
-        if input.trim().to_lowercase() == String::from("x") {
-            return Err(())
-        }
-
-        let option_num: u8 = input.trim().parse().unwrap();
+        let option_num: u8 = match input.trim().parse() {
+            Ok(n) => n,
+            Err(_) => return Err(())
+        };
 
         match option_num {
             1 => card.adjust_accuracy(true),
             2 => card.adjust_accuracy(false),
             _ => println!("Unimplemented")
-
         }
     }
 
