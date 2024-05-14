@@ -41,10 +41,34 @@ fn main() {
                 }
                 else {
                     loop {
-                        match test_deck(&mut deck) {
-                            Ok(_) => (),
+                        println!("\n----------\n");
+                        println!("Would you liek to do an easy (1), medium (2), or hard (3) test?");
+
+                        let mut input = String::new();
+                        std::io::stdin().read_line(&mut input).unwrap();
+                        
+                        let option_num: u8 = match input.trim().parse() {
+                            Ok(n) => n,
                             Err(_) => break
-                        }
+                        };
+
+                        match option_num {
+                            1 => match test_deck(&mut deck, Difficulty::Easy) {
+                                Ok(_) => (),
+                                Err(_) => break
+                            },
+                            2 => match test_deck(&mut deck, Difficulty::Medium) {
+                                Ok(_) => (),
+                                Err(_) => break
+                            },
+                            3 => match test_deck(&mut deck, Difficulty::Medium) {
+                                Ok(_) => (),
+                                Err(_) => break
+                            },
+                            _ => break
+                        }  
+
+                        
                     }
                 }   
             },
@@ -70,8 +94,8 @@ fn main() {
 
 }
 
-fn test_deck(deck: &mut Deck) -> Result<(), ()> {
-    let indices = deck.get_test_indices(10, Difficulty::Medium);
+fn test_deck(deck: &mut Deck, diff: Difficulty) -> Result<(), ()> {
+    let indices = deck.get_test_indices(10, diff);
 
     for i in indices {
         let card = &mut deck.inner()[i];
